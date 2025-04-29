@@ -3,11 +3,8 @@ package com.education.innovative_education.controller;
 
 import com.education.innovative_education.dto.AlunoDTO;
 import com.education.innovative_education.service.AlunoService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/aluno")
@@ -18,24 +15,28 @@ public class AlunoController {
     public AlunoController(AlunoService service) {
         this.service = service;
     }
-    @PostMapping("/create")
-    public AlunoDTO createAluno(@RequestBody AlunoDTO dto) {
-        return service.save(dto);
+    @PostMapping("/createAluno")
+    public ResponseEntity<AlunoDTO> createAluno(@RequestBody AlunoDTO dto) {
+        return ResponseEntity.ok(service.save(dto));
+    }
+    @PutMapping("/updateAluno")
+    public ResponseEntity<AlunoDTO> update(@RequestBody AlunoDTO dto) {
+        return ResponseEntity.ok(service.update(dto));
     }
 
-    public AlunoDTO update(AlunoDTO dto) {
-        return service.update(dto);
+    @DeleteMapping("/deleteAluno")
+    public ResponseEntity delete(@PathVariable Long id) {
+        return ResponseEntity.ok(service.delete(id));
     }
 
-    public void delete(AlunoDTO dto) {
-        service.delete(dto);
-    }
-
-    public AlunoDTO findById(Long id) {
+    @RequestMapping("/findAluno/{id}")
+    public AlunoDTO findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
+    @RequestMapping("/findAllAluno")
     public Iterable<AlunoDTO> findAll() {
+
         return service.findAll();
     }
 }

@@ -40,9 +40,10 @@ public class AlunoService {
         return mapper.toAlunoDTO(entity);
     }
 
-    public void delete(AlunoDTO dto) {
-        Aluno entity = mapper.toAluno(dto);
+    public AlunoDTO delete(Long id) {
+        Aluno entity = repository.findById(id).get();
         repository.delete(entity);
+        return mapper.toAlunoDTO(entity);
     }
 
 

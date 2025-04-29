@@ -1,14 +1,13 @@
 package com.education.innovative_education.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Date;
 
 @Entity
 @Getter
@@ -31,7 +30,7 @@ public class Aluno {
 
     private String rgAluno;
 
-    private String dataNascAluno;
+    private Date dataNascAluno;
 
     private String dataMatriculaAluno;
 
