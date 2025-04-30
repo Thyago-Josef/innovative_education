@@ -7,7 +7,6 @@ import com.education.innovative_education.repository.TurmaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Collections;
 
 @Service
@@ -25,19 +24,19 @@ public class TurmaService {
     }
 
 
-    private TurmaDTO save(TurmaDTO dto) {
+    public TurmaDTO save(TurmaDTO dto) {
         Turma entity = mapper.toEntity(dto);
         entity = repository.save(entity);
         return mapper.toDto(entity);
     }
 
-    private TurmaDTO update(TurmaDTO dto) {
+    public TurmaDTO update(TurmaDTO dto) {
         Turma entity = mapper.toEntity(dto);
         entity = repository.save(entity);
         return mapper.toDto(entity);
     }
 
-    private TurmaDTO delete(Long id) {
+    public TurmaDTO delete(Long id) {
         Turma entity = repository.findById(id).get();
         repository.delete(entity);
         return mapper.toDto(entity);
